@@ -6,11 +6,26 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ServiceProvider } from '../providers/service/service';
+import { ListUtils } from '../Utils/list';
+import { DisplayPhotosPage } from '../pages/display-photos/display-photos';
+import { AlbumsPage } from '../pages/albums/albums';
+import { PhotosPage } from '../pages/photos/photos';
+import { SettingsPage } from '../pages/settings/settings';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    DisplayPhotosPage,
+    TabsPage,
+    AlbumsPage,
+    PhotosPage,
+    SettingsPage
+  
   ],
   imports: [
     BrowserModule,
@@ -19,12 +34,22 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    DisplayPhotosPage,
+    TabsPage,
+    AlbumsPage,
+    PhotosPage,
+    SettingsPage
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ServiceProvider, 
+    ListUtils,
+    PhotoLibrary
+
   ]
 })
 export class AppModule {}
