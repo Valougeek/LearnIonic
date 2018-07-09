@@ -29,8 +29,10 @@ export class PhotosPage {
             this.albumsBase.add(libraryItem.thumbnailURL);
           });
         },
-        error: error => { this.ShowToast(error) },
-        complete: () => { this.ShowToast('done getting photos'); }
+        //error: error => { this.ShowToast('error') },
+        error: err => { console.log('getLibrary error: ' + err) },
+        //complete: () => { this.ShowToast('done getting photos'); }
+        complete: () => { console.log(`completed`)}
       });
     })
     .catch(err => console.log('permissions weren\'t granted'));
