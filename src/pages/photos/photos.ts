@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 
+
 /**
  * Generated class for the PhotosPage page.
  *
@@ -20,7 +21,8 @@ export class PhotosPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private photoLibrary: PhotoLibrary, private toastCtrl: ToastController) {
 
-    this.photoLibrary.requestAuthorization().then(() => {
+    //this.photoLibrary.requestAuthorization().then(() => 
+    {
       this.photoLibrary.getLibrary().subscribe({
         next: library => {
           library.forEach(function (libraryItem) {
@@ -31,8 +33,8 @@ export class PhotosPage {
         error: err => { this.ShowToast('could not get photos'); },
         complete: () => { this.ShowToast('done getting photos'); }
       });
-    })
-      .catch(err => this.ShowToast('permissions weren\'t granted'));
+    }
+     // ).catch(err => this.ShowToast('permissions weren\'t granted'));
 
     
     
