@@ -47,7 +47,7 @@ export class PhotosPage {
     this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
       toast => {
         console.log(toast);
-      }
+      })
   }
 
 
