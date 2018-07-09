@@ -20,7 +20,8 @@ export class PhotosPage {
   albumsBase: string[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private photoLibrary: PhotoLibrary, private toastCtrl: ToastController) {
-      
+
+    this.photoLibrary.requestAuthorization({ read: true, write: true }).then(() => {
       this.photoLibrary.getLibrary().subscribe({
         next: library => {
           library.forEach(function (libraryItem) {
@@ -28,11 +29,14 @@ export class PhotosPage {
             this.albumsBase.add(libraryItem.thumbnailURL);
           });
         },
-        error:error => { this.ShowToast(error) },
+        error: error => { this.ShowToast(error) },
         complete: () => { this.ShowToast('done getting photos'); }
       });
-    }
-  ShowToast(message:string){
+    })
+    .catch(err => console.log('permissions weren\'t granted'));
+  }
+
+  ShowToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 3000,
