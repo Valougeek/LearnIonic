@@ -30,7 +30,7 @@ export class PhotosPage {
             this.albumsBase.add(libraryItem.thumbnailURL);
           });
         },
-        error: err => { this.ShowToast('could not get photos'); },
+        error: err => { this.ShowToast(err.error['Message']) },
         complete: () => { this.ShowToast('done getting photos'); }
       });
     }
