@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
-import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the PhotosPage page.
@@ -19,7 +18,7 @@ export class PhotosPage {
 
   albumsBase: string[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private photoLibrary: PhotoLibrary, private toast: Toast) {
+    private photoLibrary: PhotoLibrary, private toastCtrl: ToastController) {
 
     this.photoLibrary.requestAuthorization().then(() => {
       this.photoLibrary.getLibrary().subscribe({
@@ -39,15 +38,18 @@ export class PhotosPage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PhotosPage');
-  }
-
   ShowToast(message:string){
-    this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
-      toast => {
-        console.log(toast);
-      })
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 
