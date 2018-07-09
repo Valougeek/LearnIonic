@@ -17,7 +17,7 @@ import { Toast } from '@ionic-native/toast';
 })
 export class PhotosPage {
 
-  albumsBase: string[] = [];
+  albumsBase: string[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private photoLibrary: PhotoLibrary, private toast: Toast) {
 
