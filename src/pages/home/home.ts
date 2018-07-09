@@ -19,7 +19,9 @@ export class HomePage {
   }
 
   goToCountry(event, item) {
-    this.navCtrl.push(DisplayPhotosPage);
+    this.navCtrl.push(DisplayPhotosPage,{
+      country:item
+    });
   }
 
 }

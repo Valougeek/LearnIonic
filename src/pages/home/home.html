@@ -8,7 +8,7 @@
 
 <ion-content padding class="card-background-page">
   <div *ngIf="listCountries">
-    <ion-card *ngFor="let country of listCountries" (click)="goToCountry($event, country)">
+    <ion-card *ngFor="let country of listCountries" (click)="goToCountry($event, country.title)">
       <img src="{{country.urlPicture}}" />
       <ion-card-content>
         <ion-card-title>

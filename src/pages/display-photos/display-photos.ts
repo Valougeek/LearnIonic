@@ -16,6 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class DisplayPhotosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    if(navParams.get('country')){
+
+    }else{
+      //display all pictures
+    }
   }
 
   ionViewDidLoad() {
