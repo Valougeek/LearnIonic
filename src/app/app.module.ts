@@ -14,6 +14,7 @@ import { AlbumsPage } from '../pages/albums/albums';
 import { PhotosPage } from '../pages/photos/photos';
 import { SettingsPage } from '../pages/settings/settings';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { ToastController } from 'ionic-angular';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
     TabsPage,
     AlbumsPage,
     PhotosPage,
-    SettingsPage
+    SettingsPage,
+    
   
   ],
   imports: [
@@ -48,7 +50,8 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServiceProvider, 
     ListUtils,
-    PhotoLibrary
+    PhotoLibrary,
+    ToastController
 
   ]
 })
