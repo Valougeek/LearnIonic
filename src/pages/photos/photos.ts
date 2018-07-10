@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 
 
 /**
@@ -19,7 +20,7 @@ export class PhotosPage {
 
   albumsBase: string[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private photoLibrary: PhotoLibrary, private toastCtrl: ToastController) {
+    private photoLibrary: PhotoLibrary, private toastCtrl: ToastController, private mediaCapture: MediaCapture) {
 
     this.photoLibrary.requestAuthorization({ read: true, write: true }).then(() => {
       this.photoLibrary.getLibrary().subscribe({
@@ -29,13 +30,13 @@ export class PhotosPage {
             this.albumsBase.add(libraryItem.thumbnailURL);
           });
         },
-        //error: error => { this.ShowToast('error') },
-        error: err => { console.log('getLibrary error: ' + err) },
-        //complete: () => { this.ShowToast('done getting photos'); }
-        complete: () => { console.log(`completed`)}
+        error: error => { this.ShowToast(error) },
+        //error: err => { console.log('getLibrary error: ' + err) },
+        complete: () => { this.ShowToast('done getting photos'); }
+        //complete: () => { console.log(`completed`)}
       });
     })
-    .catch(err => console.log('permissions weren\'t granted'));
+      .catch(err => console.log('permissions weren\'t granted'));
   }
 
   ShowToast(message: string) {

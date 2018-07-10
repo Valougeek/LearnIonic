@@ -15,6 +15,8 @@ import { PhotosPage } from '../pages/photos/photos';
 import { SettingsPage } from '../pages/settings/settings';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { ToastController } from 'ionic-angular';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { ToastController } from 'ionic-angular';
     ServiceProvider, 
     ListUtils,
     PhotoLibrary,
-    ToastController
+    ToastController,
+    MediaCapture,
 
   ]
 })
